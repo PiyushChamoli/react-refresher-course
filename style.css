@@ -1,7 +1,4 @@
-#header {
-  color: red;
-}
-
-#sub-header {
-  color: rebeccapurple;
+.abc {
+  color: blueviolet;
+  font-size: 40px;
 }
