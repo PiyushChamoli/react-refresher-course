@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
 const heading = React.createElement("h1", { id: "header", abc: "xyz" }, [
   "First line of react",
   React.createElement(
