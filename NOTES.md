@@ -1,8 +1,8 @@
-// Lecture 3
-root.render(fileName) will replace (not append) everything inside root.
-JSX is syntax which is HTML-like or XML-like and not HTML.
-React.createElement() and JSX both creates an object.
-Parcel transpiles JSX code using Babel.
-2 types of components: 1. Class based 2. Functional based.
-Component composition is basically using components inside other components.
-JSX prevents cross site scripting attacks inside {}.
+// Lecture 4
+Use props to send any number of data.
+Config driven data is configuration(json data) is used how the UI will be.
+Key is to be passed when map or similar function is used (don't use index as key).
+React.fragment is a feature to group multiple elements without it showing up in DOM.
+Virtual DOM is a lightweight copy of an actual DOM.
+React reconcilation is the actual process through which react updates browser DOM to match Virtual DOM.
+React fiber is reimpplementation of react core reconcilation library to improve responsiveness and performance.
