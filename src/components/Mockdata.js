@@ -1,57 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const Heading = () => {
-  return (
-    <div className="header flex">
-      <div className="logo-container">
-        <img
-          alt="logo"
-          src="https://cdn.dribbble.com/users/5960208/screenshots/16398589/i_will_2_modern_minimalist_logo_design_within_12_hrs__9__4x.jpg"
-        />
-      </div>
-      <ul className="nav-items flex">
-        <li>Home</li>
-        <li>About Us</li>
-        <li>Contact Us</li>
-        <li>Cart</li>
-      </ul>
-    </div>
-  );
-};
-
-const RestaurantUI = (props) => {
-  const { name, cloudinaryImageId, cuisines, costForTwo, avgRatingString } =
-    props?.resData.info;
-  return (
-    <div className="res-body">
-      <div className="res-img">
-        <img
-          src={
-            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-            cloudinaryImageId
-          }
-          alt="Food Image"
-        />
-      </div>
-      <h2>{name}</h2>
-      <p>{cuisines.join(", ")}</p>
-      <h3>{costForTwo}</h3>
-      <p>{avgRatingString} average rating</p>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="body flex">
-      {resList.map((restaurant) => (
-        <RestaurantUI key={restaurant.info.id} resData={restaurant} />
-      ))}
-    </div>
-  );
-};
-
 const resList = [
   {
     info: {
@@ -1672,15 +1618,4 @@ const resList = [
   },
 ];
 
-const AppLayout = () => {
-  return (
-    <div className="container">
-      <Heading />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout />);
+export default resList;
