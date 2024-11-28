@@ -26,10 +26,9 @@ const Body = () => {
       <button
         onClick={(e) => {
           console.log("event", e);
-          e.preventDefault();
-          let filteredRes = filterRes(searchText, restaurantList);
-          setRestaurantList(filterRes);
-          console.log("filteredResList", filteredRes);
+          let filteredRes = filterRes(searchText, resList);
+          setRestaurantList(filteredRes);
+          console.log("filteredResList", filteredRes); // logs the correct filtered result
         }}
       >
         Search Restaurant
