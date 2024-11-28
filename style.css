@@ -182,3 +182,31 @@ table {
   max-height: 280px;
   object-fit: cover;
 }
+
+body {
+  text-align: center;
+}
+
+.inp-box {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 10px;
+  margin: 10px 0;
+  font-size: 18px;
+  box-shadow: 1px 2px 15px 0px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+button {
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  box-shadow: 1px 2px 15px 0px rgba(0, 0, 0, 0.2);
+  padding: 8px 10px;
+  font-size: 18px;
+  margin: 10px 6px;
+}
+
+button:hover {
+  cursor: pointer;
+}

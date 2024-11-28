@@ -1,8 +1,8 @@
-// Lecture 4
-Use props to send any number of data.
-Config driven data is configuration(json data) is used how the UI will be.
-Key is to be passed when map or similar function is used (don't use index as key).
-React.fragment is a feature to group multiple elements without it showing up in DOM.
-Virtual DOM is a lightweight copy of an actual DOM.
-React reconcilation is the actual process through which react updates browser DOM to match Virtual DOM.
-React fiber is reimpplementation of react core reconcilation library to improve responsiveness and performance.
+// Lecture 5
+Two types of exports and imports: One is default export default name / import name from "src" and second is named export as in export const name / import {name} from "src".
+React hooks are normal JS utility functions.
+Whenever a state variable updates, react re renders the component.
+useState goes const [name, setName] = useState([]);
+Reconciliation Algo(React Fiber): Scenario is res.container has 10 restaurants which is changed now to 7 restaurants. It happens in such a way that Diffing Algo checks the change between Virtual DOM and Actual DOM and re renders the component which has changed.
+useState has a second set function for changes as it triggers the diffing algo to work.
+React is fast because it does efficient fast DOM manipulation.
