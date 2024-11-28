@@ -1,8 +1,4 @@
-// Lecture 5
-Two types of exports and imports: One is default export default name / import name from "src" and second is named export as in export const name / import {name} from "src".
-React hooks are normal JS utility functions.
-Whenever a state variable updates, react re renders the component.
-useState goes const [name, setName] = useState([]);
-Reconciliation Algo(React Fiber): Scenario is res.container has 10 restaurants which is changed now to 7 restaurants. It happens in such a way that Diffing Algo checks the change between Virtual DOM and Actual DOM and re renders the component which has changed.
-useState has a second set function for changes as it triggers the diffing algo to work.
-React is fast because it does efficient fast DOM manipulation.
+// Lecture6
+Earlier Monolith architecture was used, which was basically one big project and everything will be built inside it and every time a change was done the whole big project was compiled and run.
+Nowadays microservices architecture is used which is every service is working on it's own and having it's own project and all services come together to form a big whole project. This is also referred to sepration of concern and each service following it's job is referred to as single responsibility principle.
+Different micro services can be deployed on different ports and these ports can be mapped to different services and by doing calls to differnt urls microservices can interact with each other.
