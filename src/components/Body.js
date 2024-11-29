@@ -1,6 +1,6 @@
 import RestaurantUI from "./RestaurantUI";
 import resList from "./Mockdata";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function filterRes(val, res) {
   console.log("searchText", val);
