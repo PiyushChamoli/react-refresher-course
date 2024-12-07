@@ -160,6 +160,10 @@ table {
   align-items: center;
 }
 
+.nav-items {
+  align-items: center;
+}
+
 .nav-items > li {
   margin-left: 22px;
   font-size: 18px;
@@ -209,4 +213,18 @@ button {
 
 button:hover {
   cursor: pointer;
+}
+
+.shimmerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shimmerCard {
+  width: 300px;
+  height: 200px;
+  background-color: lightgray;
+  margin: 10px;
 }
