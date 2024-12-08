@@ -1,8 +1,9 @@
 import { CDN_URL } from "../utils/constants";
 
 const RestaurantUI = (props) => {
+  console.log("props", props);
   const { name, cloudinaryImageId, cuisines, costForTwo, avgRatingString } =
-    props?.resData.info;
+    props?.resData?.info;
   return (
     <div className="res-body">
       <div className="res-img">

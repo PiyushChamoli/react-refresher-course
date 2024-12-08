@@ -1,20 +1,20 @@
-// Lecture6
-Earlier Monolith architecture was used, which was basically one big project and everything will be built inside it and every time a change was done the whole big project was compiled and run.
+// Lecture 7
 
-Nowadays microservices architecture is used. A microservice is a software architectural style where an application is built as a collection of loosely and independently deployable services. This is also referred to sepration of concern and each service following it's job is referred to as single responsibility principle.
+If there's no dependency array useEffect will be called on every component render.
+If dependency array is present but empty it is only called once on the inital render.
+If dependency array is present and not empty then it is called whenever that state variable updates.
 
-Different micro services can be deployed on different ports and these ports can be mapped to different services and by doing calls to differnt urls microservices can interact with each other.
+Always try to use hooks at the start of the functional component.
 
-2 approaches to fetch data from backend: first is When page loads - make API calls - render UI and the second approach is When page loads - render UI - make API calls - re render UI. We will follow 2nd approach as it gives better UX and React renders fast.
+Don't use useState inside a conditional statement such as if else, for, functions.
 
-useEffect is needed for side effect operations.These operations aren't part of rendering process such as state changes, fetching data and dom manipulation. useEffect hook takes 2 arguments, first one being a callback function and second one is it's dependencies. useEffect is called when the Components is fully loaded.
+2 types of routing in web applications- client side and server side routing.
 
-Shimmer UI - showing an UI before the data renders.
+We used react router dom for routing.
+createBrowserRouter is used to create the various routes(paths,children,elements and errorElement).
+RouterProvider is used to point towards the route using router.
+Outlet is used for replacing components based on paths.
 
-Conditional rendering: rendering on the basis of whether a condition is true or not, for eg. if data has not loaded show shimmer UI otherwise render Component.
+Never use anchor tags for routing in React as we have better efficient options which works without reloading page such as Link tag by react router dom.
 
-whenever state variable changes react triggers a reconciliation cycle (re renders).
-
-Optional chaining is ES11 feature that checks whether the value before is null or undefined and if true return undefined thus preventing runtime error.
-
-Cross Origin Resource Sharing is a security feature implemented by web browsers to restrict how resources on a web page can be requested from a different domain instead of the one serving the web page.
+SPA single page application uses client side routing(no network calls are being made as all the components are already present in the app) and doesn't reload the webpage.
