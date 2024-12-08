@@ -1,8 +1,8 @@
 import RestaurantUI from "./RestaurantUI";
-import resList from "./Mockdata";
 import { useState, useEffect } from "react";
 import { RESTAURANT_LIST } from "../utils/constants";
 import Shimmer from "./ShimmerUI";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   // useState Hooks
@@ -53,7 +53,12 @@ const Body = () => {
       <button onClick={filterRestaurants}>Search Restaurant</button>
       <div className="flex">
         {filteredRestaurantList.map((restaurant) => (
-          <RestaurantUI key={restaurant.info.id} resData={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurantUI resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
