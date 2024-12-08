@@ -1,32 +1,45 @@
 import RestaurantUI from "./RestaurantUI";
 import resList from "./Mockdata";
 import { useState, useEffect } from "react";
+import { RESTAURANT_LIST } from "../utils/constants";
 import Shimmer from "./ShimmerUI";
-
-function filterRes(val, res) {
-  console.log("searchText", val);
-  console.log(res);
-  let data = res.filter((r) => r.info.name.toLowerCase().includes(val));
-  return data;
-}
 
 const Body = () => {
   // useState Hooks
-  let [restaurantList, setRestaurantList] = useState(resList);
-  let [searchText, setSearchText] = useState("");
+  const [restaurantList, setRestaurantList] = useState([]);
+  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
   // useEffect Hook
   useEffect(() => {
     fetchData();
   }, []);
+
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.041029329885028&lng=72.93475024402142&collection=83631&tags=layout_CCS_Pizza&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log("fetched data", json.data.cards);
+    const fetchData =
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    console.log("Fetched Data", fetchData);
+    setRestaurantList(fetchData);
+    setFilteredRestaurantList(fetchData);
   };
-  // Conditional Rendering : restaurantList.length ? <Shimmer/> : (body);
-  return (
+
+  // Filter restaurants by search text
+  const filterRestaurants = () => {
+    const filtered = restaurantList.filter((res) =>
+      res.info.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredRestaurantList(filtered);
+  };
+
+  // Conditional Rendering
+  return restaurantList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <input
         type="text"
@@ -37,18 +50,9 @@ const Body = () => {
           setSearchText(e.target.value);
         }}
       />
-      <button
-        onClick={(e) => {
-          console.log("event", e);
-          let filteredRes = filterRes(searchText, resList);
-          setRestaurantList(filteredRes);
-          console.log("filteredResList", filteredRes); // logs the correct filtered result
-        }}
-      >
-        Search Restaurant
-      </button>
+      <button onClick={filterRestaurants}>Search Restaurant</button>
       <div className="flex">
-        {restaurantList.map((restaurant) => (
+        {filteredRestaurantList.map((restaurant) => (
           <RestaurantUI key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
