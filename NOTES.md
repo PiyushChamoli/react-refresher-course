@@ -1,20 +1,17 @@
-// Lecture 7
+// Lecture 8
 
-If there's no dependency array useEffect will be called on every component render.
-If dependency array is present but empty it is only called once on the inital render.
-If dependency array is present and not empty then it is called whenever that state variable updates.
+Class based components have a render method which returns the JSX.
 
-Always try to use hooks at the start of the functional component.
+Super(props) is to be called in constructor(props) of class based components.
 
-Don't use useState inside a conditional statement such as if else, for, functions.
+In class based components never update state variables directly. Always use setState().
 
-2 types of routing in web applications- client side and server side routing.
+order of calls made in class based component: 1) Parent Constructor 2) Parent Render 3) Child Constructor 4) Child Render 5) Child componentDidMount 6) Parent componentDidMount
 
-We used react router dom for routing.
-createBrowserRouter is used to create the various routes(paths,children,elements and errorElement).
-RouterProvider is used to point towards the route using router.
-Outlet is used for replacing components based on paths.
+As we follow Load>render>API>render for class based comp componentDidMount works as useEffect that is after rendering it makes API call
 
-Never use anchor tags for routing in React as we have better efficient options which works without reloading page such as Link tag by react router dom.
+React component lifecycle consists of 2 phase:
+Render Phase -> Mounting(Constructor & Render)
+Commit Phase -> Mounting(React updates DOM & componentDidMount)
 
-SPA single page application uses client side routing(no network calls are being made as all the components are already present in the app) and doesn't reload the webpage.
+React is fast also because it batches if there are multiple components. First react will implement the render phase of the multiple components that is running the constructor and render which happens by reconciliation process of comparing the virtual dom and actual dom. Then React will start commit phase of all the comps.
