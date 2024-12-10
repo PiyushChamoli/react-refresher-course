@@ -228,3 +228,9 @@ button:hover {
   background-color: lightgray;
   margin: 10px;
 }
+
+.user {
+  border: 1px solid black;
+  margin: 20px 10px;
+  padding: 10px;
+}
