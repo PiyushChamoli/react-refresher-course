@@ -1,15 +1,18 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Heading = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
+  const onlineStatus = useOnlineStatus();
   return (
     <div className="header flex">
       <div className="logo-container">
         <img alt="logo" src={LOGO_URL} />
       </div>
       <ul className="nav-items flex">
+        <li>Online Status: {onlineStatus ? "✅" : "❎"}</li>
         <li>
           <Link to="/">Home</Link>
         </li>

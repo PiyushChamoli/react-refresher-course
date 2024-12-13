@@ -1,33 +1,35 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./ShimmerUI";
 import { useParams } from "react-router";
-import { MENU_API } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   // useEffect Hook
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  // useEffect(() => {
+  //   fetchMenu();
+  // }, []);
 
   // useState Hook
-  const [resData, setResData] = useState(null);
+  // const [resData, setResData] = useState(null);
 
   const { resId } = useParams();
 
-  // Fetch Restaurant Menu
-  const fetchMenu = async () => {
-    const data = await fetch(MENU_API + resId);
-    const json = await data.json();
-    setResData(json.data);
-  };
+  // custom hook useRestaurantMenu used according to Single Responsibility Principle
+  const resInfo = useRestaurantMenu(resId);
 
-  if (resData == null) return <Shimmer />;
+  // Fetch Restaurant Menu (now delegated to custom hook useRestaurantMenu)
+  // const fetchMenu = async () => {
+  //   const data = await fetch(MENU_API + resId);
+  //   const json = await data.json();
+  //   setResData(json.data);
+  // };
+
+  if (resInfo == null) return <Shimmer />;
 
   const { name, costForTwoMessage, avgRating } =
-    resData.cards[2].card.card.info;
+    resInfo.cards[2].card.card.info;
 
   const { itemCards } =
-    resData.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
+    resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
 
   return (
     <div>
