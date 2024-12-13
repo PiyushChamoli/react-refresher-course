@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { RESTAURANT_LIST } from "../utils/constants";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // useState Hooks
@@ -35,6 +36,11 @@ const Body = () => {
     );
     setFilteredRestaurantList(filtered);
   };
+
+  // checking online status with custom hook useOnlineStatus
+  let status = useOnlineStatus();
+  if (status === false)
+    return <h1>Please check your Internet! You're offline!</h1>;
 
   // Conditional Rendering
   return restaurantList.length === 0 ? (
