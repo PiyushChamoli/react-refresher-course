@@ -46,18 +46,23 @@ const Body = () => {
   return restaurantList.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
+    <div className="text-center">
       <input
         type="text"
         placeholder="What would you like to eat!"
-        className="inp-box"
+        className=" inline-block py-2 px-3 m-2 text-sm shadow-lg bg-gray-100 min-w-52"
         value={searchText}
         onChange={(e) => {
           setSearchText(e.target.value);
         }}
       />
-      <button onClick={filterRestaurants}>Search Restaurant</button>
-      <div className="flex">
+      <button
+        className="shadow-lg py-2 px-3 bg-gray-100"
+        onClick={filterRestaurants}
+      >
+        Search Restaurant
+      </button>
+      <div className="flex justify-between items-center flex-wrap">
         {filteredRestaurantList.map((restaurant) => (
           <Link
             key={restaurant.info.id}

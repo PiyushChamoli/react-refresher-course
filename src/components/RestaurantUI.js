@@ -5,9 +5,13 @@ const RestaurantUI = (props) => {
   const { name, cloudinaryImageId, cuisines, costForTwo, avgRatingString } =
     props?.resData?.info;
   return (
-    <div className="res-body">
-      <div className="res-img">
-        <img src={CDN_URL + cloudinaryImageId} alt="Food Image" />
+    <div className="basis-[50%] flex-shrink grow-0 p-3 m-2 max-w-80 bg-gray-100 shadow-md">
+      <div className="max-w-80">
+        <img
+          className="w-auto"
+          src={CDN_URL + cloudinaryImageId}
+          alt="Food Image"
+        />
       </div>
       <h2>{name}</h2>
       <p>{cuisines.join(", ")}</p>
