@@ -15,7 +15,7 @@ const Contact = lazy(() => import("./components/Contact"));
 
 const AppLayout = () => {
   return (
-    <div className="container">
+    <div className="max-w-screen-xl px-10 my-0 mx-auto">
       <Heading />
       <Outlet />
     </div>
