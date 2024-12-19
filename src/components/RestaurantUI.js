@@ -1,7 +1,7 @@
 import { CDN_URL } from "../utils/constants";
 
 const RestaurantUI = (props) => {
-  console.log("props", props);
+  // console.log("props", props);
   const { name, cloudinaryImageId, cuisines, costForTwo, avgRatingString } =
     props?.resData?.info;
   return (
@@ -19,6 +19,21 @@ const RestaurantUI = (props) => {
       <p>{avgRatingString} average rating</p>
     </div>
   );
+};
+
+// Higher Order Component (FEATURE REDUNDANT)
+
+// input - restaurantUI => output - restaurantUIPromoted
+
+export const withPromotedLabel = (RestaurantUI) => {
+  return (props) => {
+    return (
+      <>
+        <label>Promoted</label>
+        <RestaurantUI {...props} />
+      </>
+    );
+  };
 };
 
 export default RestaurantUI;

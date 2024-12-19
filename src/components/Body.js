@@ -1,4 +1,4 @@
-import RestaurantUI from "./RestaurantUI";
+import RestaurantUI, { withPromotedLabel } from "./RestaurantUI";
 import { useState, useEffect } from "react";
 import { RESTAURANT_LIST } from "../utils/constants";
 import Shimmer from "./ShimmerUI";
@@ -11,6 +11,9 @@ const Body = () => {
   const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  // component returned from HOF (FEATURE REDUNDANT)
+  const RestaurantUIPromoted = withPromotedLabel(RestaurantUI);
+
   // useEffect Hook
   useEffect(() => {
     fetchData();
@@ -21,8 +24,9 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
+    console.log("beforeFetch", json.data);
     const fetchData =
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     console.log("Fetched Data", fetchData);
     setRestaurantList(fetchData);
