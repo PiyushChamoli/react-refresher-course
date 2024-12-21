@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Heading from "./components/Header";
 import Body from "./components/Body";
@@ -8,15 +8,27 @@ import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/ShimmerUI";
+import UserContext from "./utils/UserContext";
 
 // Lazy Loading
 const About = lazy(() => import("./components/About"));
 const Contact = lazy(() => import("./components/Contact"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    // Auth  process
+    const data = {
+      name: "Piyush",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
     <div className="max-w-screen-xl px-10 my-0 mx-auto">
-      <Heading />
+      <UserContext.Provider value={{ loggedInUser: userName }}>
+        <Heading />
+      </UserContext.Provider>
       <Outlet />
     </div>
   );
