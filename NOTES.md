@@ -1,9 +1,14 @@
-// Lecture 11
+// Lecture 12
 
-Higher Order Component is a function that takes a component and returns another component.
+Redux creates a store which is accessible from all components. Redux store has various slices created according to the needs.
 
-When a component has it's own state it is called uncontrolled component and when it's parent component controls the state it is called controlled component.
+On click of a ADD button it dispatches an Action which calls a function(reducer) and the function will update ths slice of the redux store(cart) then as the header cart UI uses selector function to stay in sync with slice(cart) to stay updated.
 
-Context.Consumer and Context.Provider
+Write: ADD button => dispatch(Action) => function(reducer) => Change in slice(Adds to cart)
+Update: Slice(Cart) => selector (subcribing to the store) => show updated cart total in header UI
 
-If value is not passed to Provider it will fallback to default value.
+Whenever using useSelector make sure to subscribe only to the right portion of the store otherwise it will be a huge performance loss.
+
+Redux uses Immer library behind the scenes.
+
+Learn RTK Query from docs.

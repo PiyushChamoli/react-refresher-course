@@ -9,6 +9,9 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/ShimmerUI";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 // Lazy Loading
 const About = lazy(() => import("./components/About"));
@@ -25,12 +28,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <div className="max-w-screen-xl px-10 my-0 mx-auto">
-      <UserContext.Provider value={{ loggedInUser: userName }}>
-        <Heading />
-      </UserContext.Provider>
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <div className="max-w-screen-xl px-10 my-0 mx-auto">
+        <UserContext.Provider value={{ loggedInUser: userName }}>
+          <Heading />
+        </UserContext.Provider>
+        <Outlet />
+      </div>
+    </Provider>
   );
 };
 
@@ -63,6 +68,10 @@ const appRouter = createBrowserRouter([
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
       },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
     ],
     errorElement: <Error />,
   },
@@ -70,4 +79,10 @@ const appRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={appRouter} />);
+root.render(
+  <Provider store={appStore}>
+    <RouterProvider router={appRouter} />
+  </Provider>
+);
+
+//root.render(<RouterProvider router={appRouter} />);
