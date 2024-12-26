@@ -10,7 +10,7 @@ describe("Contact Us page test cases", () => {
     expect(heading).toBeInTheDocument();
   });
 
-  test("Should load button in Contact component", () => {
+  it("Should load button in Contact component", () => {
     render(<Contact />);
     const button = screen.getByRole("button");
     // Assertion
