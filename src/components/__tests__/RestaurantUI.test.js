@@ -9,3 +9,5 @@ it("Should render RestaurantUI with props data", () => {
   const resName = screen.getByText("Pizza Hut");
   expect(resName).toBeInTheDocument();
 });
+
+// it("Should render RestaurantUI with Promoted Label", () => {});
